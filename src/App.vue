@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <vue-map></vue-map>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import VueMap from './components/Map'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    VueMap
   }
 }
 </script>
