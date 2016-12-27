@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <vue-map></vue-map>
+    <vue-map>
+      <vue-marker></vue-marker>
+      <vue-marker></vue-marker>
+      <vue-marker></vue-marker>
+      <vue-marker></vue-marker>
+    </vue-map>
   </div>
 </template>
 
 <script>
 import VueMap from './components/Map'
+import VueMarker from './components/Marker'
 
 export default {
   name: 'app',
   components: {
-    VueMap
+    VueMap, VueMarker
   }
 }
 </script>
