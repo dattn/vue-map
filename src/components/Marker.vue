@@ -17,11 +17,18 @@
 
   export default MapComponent.extend({
     props: [ 'position' ],
+
     mounted () {
       this.$marker = Leaflet.marker(this.position)
       this.$on('map-ready', () => {
         this.$marker.addTo(this.$map)
       })
+    },
+
+    beforeDestroy () {
+      if (this.$map) {
+        this.$map.removeLayer(this.$marker)
+      }
     }
   })
 </script>
