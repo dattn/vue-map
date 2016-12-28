@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-map :position="position" :zoom="zoom" @zoom="onZoom">
+    <vue-map :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
       <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
     </vue-map>
     <div>
@@ -9,7 +9,7 @@
     </div>
     <div>
       Longitude:
-      <input type="number" step="any" v-model="long" />
+      <input type="number" step="any" v-model="lng" />
     </div>
     <div>
       Zoom:
@@ -29,25 +29,31 @@ export default {
   },
   data () {
     return {
-      lat: 51.505,
-      long: -0.09,
+      lat: 49.611,
+      lng: 6.13,
       zoom: 13,
       markers: [
-        [51.5, -0.11],
-        [51.52, -0.09],
-        [51.5, -0.09],
-        [51.52, -0.11]
+        { lat: 49.611, lng: 6.13 },
+        { lat: 49.62, lng: 6.118 }
       ]
     }
   },
   computed: {
     position () {
-      return [ this.lat, this.long ]
+      return {
+        lat: this.lat,
+        lng: this.lng
+      }
     }
   },
   methods: {
     onZoom (data) {
       this.zoom = data.zoom
+    },
+
+    onMove (data) {
+      this.lat = data.position.lat
+      this.lng = data.position.lng
     }
   }
 }

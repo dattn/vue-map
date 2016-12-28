@@ -30,6 +30,9 @@
       this.$map.on('zoom', () => this.$emit('zoom', {
         zoom: this.$map.getZoom()
       }))
+      this.$map.on('move', () => this.$emit('move', {
+        position: this.$map.getCenter()
+      }))
 
       Leaflet.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -43,6 +46,13 @@
     watch: {
       zoom (zoom) {
         this.$map.setZoom(zoom)
+      },
+
+      position (position) {
+        this.$map.panTo({
+          lat: position.lat,
+          lng: position.lng
+        })
       }
     }
 
