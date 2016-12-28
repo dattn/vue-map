@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <vue-map>
-      <vue-marker v-for="position in markers" :position="position"></vue-marker>
+    <vue-map :position="map.position" :zoom="map.zoom">
+      <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
     </vue-map>
   </div>
 </template>
@@ -17,11 +17,15 @@ export default {
   },
   data () {
     return {
+      map: {
+        position: [51.505, -0.09],
+        zoom: 13
+      },
       markers: [
         [51.5, -0.11],
-        [51.7, -0.09],
+        [51.52, -0.09],
         [51.5, -0.09],
-        [51.7, -0.11]
+        [51.52, -0.11]
       ]
     }
   }
