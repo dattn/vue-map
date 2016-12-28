@@ -24,8 +24,13 @@
 
   export default {
     props: [ 'position', 'zoom' ],
+
     mounted () {
       this.$map = Leaflet.map(this.$refs.map).setView(this.position, this.zoom)
+      this.$map.on('zoom', () => this.$emit('zoom', {
+        zoom: this.$map.getZoom()
+      }))
+
       Leaflet.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.$map)
@@ -33,6 +38,13 @@
       this.$emit('map-ready', {
         map: this.$map
       })
+    },
+
+    watch: {
+      zoom (zoom) {
+        this.$map.setZoom(zoom)
+      }
     }
+
   }
 </script>

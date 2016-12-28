@@ -1,3 +1,5 @@
+<template></template>
+
 <script>
   import Leaflet from 'leaflet'
   import MapComponent from './MapComponent'
