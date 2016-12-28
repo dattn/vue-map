@@ -16,8 +16,9 @@
   })
 
   export default MapComponent.extend({
+    props: [ 'position' ],
     mounted () {
-      this.$marker = Leaflet.marker([51.5, -0.09])
+      this.$marker = Leaflet.marker(this.position)
       this.$on('map-ready', () => {
         this.$marker.addTo(this.$map)
       })

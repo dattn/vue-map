@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <vue-map>
-      <vue-marker></vue-marker>
-      <vue-marker></vue-marker>
-      <vue-marker></vue-marker>
-      <vue-marker></vue-marker>
+      <vue-marker v-for="position in markers" :position="position"></vue-marker>
     </vue-map>
   </div>
 </template>
@@ -17,6 +14,16 @@ export default {
   name: 'app',
   components: {
     VueMap, VueMarker
+  },
+  data () {
+    return {
+      markers: [
+        [51.5, -0.11],
+        [51.7, -0.09],
+        [51.5, -0.09],
+        [51.7, -0.11]
+      ]
+    }
   }
 }
 </script>
