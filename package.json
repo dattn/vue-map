@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "A Vue.js map component using leaflet",
   "author": "Daniel Duton <daniel@duton.lu>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dattn/vue-map.git"
