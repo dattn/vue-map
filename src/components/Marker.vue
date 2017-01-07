@@ -1,5 +1,3 @@
-<template></template>
-
 <script>
   import Leaflet from 'leaflet'
   import MapComponent from './MapComponent'
@@ -29,6 +27,8 @@
         })
       }
     },
+
+    render () {},
 
     mounted () {
       this.$marker = Leaflet.marker(this.position)
