@@ -25,6 +25,12 @@
   export default {
     props: [ 'position', 'zoom' ],
 
+    created () {
+      this.$mapReady = new Promise(resolve => {
+        this.$mapReadyResolve = resolve
+      })
+    },
+
     mounted () {
       this.$map = Leaflet.map(this.$refs.map).setView(this.position, this.zoom)
       this.$map.on('zoom', () => this.$emit('zoom', {
@@ -38,9 +44,7 @@
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.$map)
 
-      this.$emit('map-ready', {
-        map: this.$map
-      })
+      this.$mapReadyResolve(this.$map)
     },
 
     watch: {

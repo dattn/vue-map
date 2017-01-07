@@ -16,10 +16,19 @@
   export default MapComponent.extend({
     props: [ 'position' ],
 
+    watch: {
+      position (position) {
+        this.$marker.setLatLng({
+          lat: position.lat,
+          lng: position.lng
+        })
+      }
+    },
+
     mounted () {
       this.$marker = Leaflet.marker(this.position)
-      this.$on('map-ready', () => {
-        this.$marker.addTo(this.$map)
+      this.$mapReady.then(map => {
+        this.$marker.addTo(map)
       })
     },
 

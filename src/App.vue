@@ -3,18 +3,31 @@
     <vue-map :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
       <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
     </vue-map>
-    <div>
-      Latitude:
-      <input type="number" step="any" v-model="lat" />
-    </div>
-    <div>
-      Longitude:
-      <input type="number" step="any" v-model="lng" />
-    </div>
-    <div>
-      Zoom:
-      <input type="number" step="any" v-model="zoom" />
-    </div>
+    <fieldset>
+      <legend>Map</legend>
+      <div>
+        Latitude: <input type="number" step="any" v-model="lat" />
+        Longitude: <input type="number" step="any" v-model="lng" />
+        <button @click="addMarkerAtMapPosition">Add Marker</button>
+      </div>
+      <div>
+        Zoom:
+        <input type="number" step="any" v-model="zoom" />
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Markers</legend>
+      <div v-for="(marker, index) in markers">
+        Latitude: <input type="number" step="any" :value="marker.lat" @input="updateMarkerLat(index, $event)" />
+        Longitude: <input type="number" step="any" :value="marker.lng" @input="updateMarkerLng(index, $event)" />
+        <button @click="removeMarker(index)">Remove</button>
+      </div>
+      <div>
+        Latitude: <input type="number" step="any" v-model="newMarker.lat" />
+        Longitude: <input type="number" step="any" v-model="newMarker.lng" />
+        <button @click="addMarker">Add</button>
+      </div>
+    </fieldset>
   </div>
 </template>
 
@@ -35,7 +48,8 @@ export default {
       markers: [
         { lat: 49.611, lng: 6.13 },
         { lat: 49.62, lng: 6.118 }
-      ]
+      ],
+      newMarker: { lat: '', lng: '' }
     }
   },
   computed: {
@@ -54,6 +68,36 @@ export default {
     onMove (data) {
       this.lat = data.position.lat
       this.lng = data.position.lng
+    },
+
+    removeMarker (index) {
+      this.markers.splice(index, 1)
+    },
+
+    addMarker () {
+      this.markers.push(this.newMarker)
+      this.newMarker = { lat: '', lng: '' }
+    },
+
+    addMarkerAtMapPosition () {
+      this.markers.push({
+        lat: this.lat,
+        lng: this.lng
+      })
+    },
+
+    updateMarkerLat (index, event) {
+      this.markers.splice(index, 1, {
+        ...this.markers[index],
+        lat: event.target.value
+      })
+    },
+
+    updateMarkerLng (index, event) {
+      this.markers.splice(index, 1, {
+        ...this.markers[index],
+        lng: event.target.value
+      })
     }
   }
 }
