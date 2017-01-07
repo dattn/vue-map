@@ -1,6 +1,8 @@
 # vue-map
 
-> A Vue.js map component using leaflet
+A Vue.js map component using leaflet
+
+[Demo page](https://vue-map.duton.lu/)
 
 ## Build Setup
 
