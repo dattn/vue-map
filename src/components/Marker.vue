@@ -14,7 +14,12 @@
   })
 
   export default MapComponent.extend({
-    props: [ 'position' ],
+    props: {
+      position: {
+        type: Object,
+        required: true
+      }
+    },
 
     watch: {
       position (position) {

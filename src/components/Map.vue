@@ -23,7 +23,17 @@
   import Leaflet from 'leaflet'
 
   export default {
-    props: [ 'position', 'zoom' ],
+    props: {
+      position: {
+        type: Object,
+        required: true
+      },
+
+      zoom: {
+        type: Number,
+        default: 13
+      }
+    },
 
     created () {
       this.$mapReady = new Promise(resolve => {
