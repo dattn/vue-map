@@ -2,6 +2,7 @@
   <div>
     <vue-map :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
       <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
+      <vue-geo-json :data="geoJson"></vue-geo-json>
     </vue-map>
     <fieldset>
       <legend>Map</legend>
@@ -34,11 +35,12 @@
 <script>
 import VueMap from './components/Map'
 import VueMarker from './components/Marker'
+import VueGeoJson from './components/GeoJson'
 
 export default {
   name: 'app',
   components: {
-    VueMap, VueMarker
+    VueMap, VueMarker, VueGeoJson
   },
   data () {
     return {
@@ -49,7 +51,46 @@ export default {
         { lat: 49.611, lng: 6.13 },
         { lat: 49.62, lng: 6.118 }
       ],
-      newMarker: { lat: '', lng: '' }
+      newMarker: { lat: '', lng: '' },
+      geoJson: {
+        type: 'Polygon',
+        coordinates: [
+          [
+            [
+              6.114921569824219,
+              49.612378400270195
+            ],
+            [
+              6.125907897949219,
+              49.618495606374275
+            ],
+            [
+              6.139812469482421,
+              49.617272226578514
+            ],
+            [
+              6.141357421875,
+              49.61148856087291
+            ],
+            [
+              6.14032745361328,
+              49.60626042633693
+            ],
+            [
+              6.126594543457031,
+              49.60247802203419
+            ],
+            [
+              6.113376617431641,
+              49.60715036117516
+            ],
+            [
+              6.114921569824219,
+              49.612378400270195
+            ]
+          ]
+        ]
+      }
     }
   },
   computed: {
