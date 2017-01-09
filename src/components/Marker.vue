@@ -32,6 +32,14 @@
 
     mounted () {
       this.$marker = Leaflet.marker(this.position)
+
+      // passthru events
+      const mapEvents = [
+        'click', 'dblclick', 'mousedown', 'mouseover', 'mouseout', 'contextmenu', 'dragstart', 'drag', 'dragend',
+        'move', 'add', 'remove', 'popupopen', 'popupopen'
+      ]
+      mapEvents.forEach(eventName => this.$marker.on(eventName, ev => this.$emit(eventName, ev)))
+
       this.$mapReady.then(map => {
         this.$marker.addTo(map)
       })
