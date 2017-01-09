@@ -43,10 +43,31 @@
 
     mounted () {
       this.$map = Leaflet.map(this.$refs.map).setView(this.position, this.zoom)
-      this.$map.on('zoom', () => this.$emit('zoom', {
+
+      // passthru events
+      const mapEvents = [
+        'click', 'dblclick', 'mousedown', 'mouseup', 'mouseover', 'mouseout', 'mousemove', 'contextmenu',
+        'focus', 'blur', 'preclick', 'load', 'unload', 'viewreset', 'movestart', 'dragstart', 'drag', 'dragend',
+        'zoomstart', 'zoomlevelschange', 'resize', 'autopanstart', 'layeradd', 'layerremove', 'baselayerchange',
+        'overlayadd', 'overlayremove', 'locationfound', 'locationerror', 'popupopen', 'popupclose'
+      ]
+      mapEvents.forEach(eventName => this.$map.on(eventName, ev => this.$emit(eventName, ev)))
+
+      // events with modified data
+      this.$map.on('zoom', ev => this.$emit('zoom', {
+        ...ev,
         zoom: this.$map.getZoom()
       }))
-      this.$map.on('move', () => this.$emit('move', {
+      this.$map.on('zoomend', ev => this.$emit('zoomend', {
+        ...ev,
+        zoom: this.$map.getZoom()
+      }))
+      this.$map.on('move', ev => this.$emit('move', {
+        ...ev,
+        position: this.$map.getCenter()
+      }))
+      this.$map.on('movend', ev => this.$emit('moveend', {
+        ...ev,
         position: this.$map.getCenter()
       }))
 
