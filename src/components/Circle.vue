@@ -2,7 +2,8 @@
   import Leaflet from 'leaflet'
   import MapComponent from './MapComponent'
 
-  export default MapComponent.extend({
+  export default {
+    extends: MapComponent,
     props: {
       position: {
         type: Object,
@@ -38,5 +39,5 @@
         this.$circle.setRadius(radius)
       }
     }
-  })
+  }
 </script>

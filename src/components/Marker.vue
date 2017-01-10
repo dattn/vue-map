@@ -11,7 +11,8 @@
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
   })
 
-  export default MapComponent.extend({
+  export default {
+    extends: MapComponent,
     props: {
       position: {
         type: Object,
@@ -59,5 +60,5 @@
         this.$map.removeLayer(this.$marker)
       }
     }
-  })
+  }
 </script>

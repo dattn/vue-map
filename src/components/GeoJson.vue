@@ -2,7 +2,8 @@
   import Leaflet from 'leaflet'
   import MapComponent from './MapComponent'
 
-  export default MapComponent.extend({
+  export default {
+    extends: MapComponent,
     props: {
       data: {
         type: Object,
@@ -41,5 +42,5 @@
         this.$geoJson.addData(data)
       }
     }
-  })
+  }
 </script>
