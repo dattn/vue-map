@@ -16,6 +16,12 @@
       position: {
         type: Object,
         required: true
+      },
+      icon: {
+        type: Leaflet.Icon,
+        default () {
+          return new Leaflet.Icon.Default()
+        }
       }
     },
 
@@ -25,13 +31,19 @@
           lat: position.lat,
           lng: position.lng
         })
+      },
+
+      icon (icon) {
+        this.$marker.setIcon(icon)
       }
     },
 
     render () {},
 
     mounted () {
-      this.$marker = Leaflet.marker(this.position)
+      this.$marker = Leaflet.marker(this.position, {
+        icon: this.icon
+      })
 
       // passthru events
       const mapEvents = [
