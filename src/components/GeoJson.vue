@@ -17,7 +17,7 @@
 
     render () {},
 
-    mounted () {
+    created () {
       this.$geoJson = Leaflet.geoJSON(this.data, {
         style: this.featureStyle
       })

@@ -1,9 +1,11 @@
 <script>
   import Leaflet from 'leaflet'
   import MapComponent from './MapComponent'
+  import Path from './Path'
 
   export default {
     extends: MapComponent,
+    mixins: [ Path ],
     props: {
       position: {
         type: Object,
@@ -17,26 +19,26 @@
 
     render () {},
 
-    mounted () {
-      this.$circle = Leaflet.circle(this.position, this.radius)
+    created () {
+      this.$path = Leaflet.circle(this.position, this.radius)
       this.$mapReady.then(map => {
-        this.$circle.addTo(map)
+        this.$path.addTo(map)
       })
     },
 
     beforeDestroy () {
       if (this.$map) {
-        this.$map.removeLayer(this.$circle)
+        this.$map.removeLayer(this.$path)
       }
     },
 
     watch: {
       position (position) {
-        this.$circle.setLatLng(position)
+        this.$path.setLatLng(position)
       },
 
       radius (radius) {
-        this.$circle.setRadius(radius)
+        this.$path.setRadius(radius)
       }
     }
   }
