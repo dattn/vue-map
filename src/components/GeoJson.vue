@@ -29,6 +29,17 @@
       if (this.$map) {
         this.$map.removeLayer(this.$geoJson)
       }
+    },
+
+    watch: {
+      featureStyle (featureStyle) {
+        this.$geoJson.setStyle(featureStyle)
+      },
+
+      data (data) {
+        this.$geoJson.clearLayers()
+        this.$geoJson.addData(data)
+      }
     }
   })
 </script>
