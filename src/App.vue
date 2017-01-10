@@ -3,6 +3,7 @@
     <vue-map :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
       <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
       <vue-geo-json :data="geoJson" :feature-style="geoJsonStyle"></vue-geo-json>
+      <vue-circle :position="{lat: 49.614, lng: 6.084}" :radius="2000"></vue-circle>
     </vue-map>
     <fieldset>
       <legend>Map</legend>
@@ -36,11 +37,12 @@
 import VueMap from './components/Map'
 import VueMarker from './components/Marker'
 import VueGeoJson from './components/GeoJson'
+import VueCircle from './components/Circle'
 
 export default {
   name: 'app',
   components: {
-    VueMap, VueMarker, VueGeoJson
+    VueMap, VueMarker, VueGeoJson, VueCircle
   },
   data () {
     return {

@@ -27,10 +27,7 @@
 
     watch: {
       position (position) {
-        this.$marker.setLatLng({
-          lat: position.lat,
-          lng: position.lng
-        })
+        this.$marker.setLatLng(position)
       },
 
       icon (icon) {
