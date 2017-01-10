@@ -2,7 +2,7 @@
   <div>
     <vue-map :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
       <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
-      <vue-geo-json :data="geoJson"></vue-geo-json>
+      <vue-geo-json :data="geoJson" :feature-style="geoJsonStyle"></vue-geo-json>
     </vue-map>
     <fieldset>
       <legend>Map</legend>
@@ -90,6 +90,11 @@ export default {
             ]
           ]
         ]
+      },
+      geoJsonStyle: function () {
+        return {
+          color: '#933'
+        }
       }
     }
   },

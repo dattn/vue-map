@@ -7,13 +7,19 @@
       data: {
         type: Object,
         required: true
+      },
+      featureStyle: {
+        type: Function,
+        default: function () {}
       }
     },
 
     render () {},
 
     mounted () {
-      this.$geoJson = Leaflet.geoJSON(this.data)
+      this.$geoJson = Leaflet.geoJSON(this.data, {
+        style: this.featureStyle
+      })
       this.$mapReady.then(map => {
         this.$geoJson.addTo(map)
       })
