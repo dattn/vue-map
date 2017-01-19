@@ -3,6 +3,8 @@
   import MapComponent from './MapComponent'
   import Path from './Path'
 
+  const defaultOptions = Leaflet.CircleMarker.prototype.options
+
   export default {
     extends: MapComponent,
     mixins: [ Path ],
@@ -13,7 +15,11 @@
       },
       radius: {
         type: Number,
-        required: true
+        default: defaultOptions.radius
+      },
+      fill: {
+        type: Boolean,
+        default: defaultOptions.fill
       }
     },
 

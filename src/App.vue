@@ -3,7 +3,7 @@
     <vue-map :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
       <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
       <vue-geo-json :data="geoJson" :feature-style="geoJsonStyle"></vue-geo-json>
-      <vue-circle :position="{lat: 49.614, lng: 6.084}" :radius="2000" :stroke="true" :fill="true" color="#990"></vue-circle>
+      <vue-circle :position="{lat: 49.614, lng: 6.084}" :radius="1000" :stroke="true" color="#990"></vue-circle>
     </vue-map>
     <fieldset>
       <legend>Map</legend>
