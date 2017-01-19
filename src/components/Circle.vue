@@ -20,7 +20,10 @@
     render () {},
 
     created () {
-      this.$path = Leaflet.circle(this.position, this.radius)
+      this.$path = Leaflet.circle(this.position, {
+        radius: this.radius,
+        ...this.pathStyle
+      })
       this.$mapReady.then(map => {
         this.$path.addTo(map)
       })
