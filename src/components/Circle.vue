@@ -36,9 +36,7 @@
     },
 
     beforeDestroy () {
-      if (this.$map) {
-        this.$map.removeLayer(this.$path)
-      }
+      this.$path.remove()
     },
 
     watch: {

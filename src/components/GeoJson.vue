@@ -27,9 +27,7 @@
     },
 
     beforeDestroy () {
-      if (this.$map) {
-        this.$map.removeLayer(this.$geoJson)
-      }
+      this.$geoJson.remove()
     },
 
     watch: {

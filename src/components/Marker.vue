@@ -57,9 +57,7 @@
     },
 
     beforeDestroy () {
-      if (this.$map) {
-        this.$map.removeLayer(this.$marker)
-      }
+      this.$marker.remove()
     }
   }
 </script>
