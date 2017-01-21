@@ -21,8 +21,12 @@
 
 <script>
   import Leaflet from 'leaflet'
+  import LayerContainer from './mixins/LayerContainer'
 
   export default {
+
+    mixins: [ LayerContainer ],
+
     props: {
       position: {
         type: Object,
@@ -33,12 +37,6 @@
         type: Number,
         default: 13
       }
-    },
-
-    created () {
-      this.$mapReady = new Promise(resolve => {
-        this.$mapReadyResolve = resolve
-      })
     },
 
     mounted () {
@@ -75,7 +73,7 @@
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.$map)
 
-      this.$mapReadyResolve(this.$map)
+      this.$setContainer(this.$map)
     },
 
     watch: {

@@ -1,4 +1,5 @@
 import Leaflet from 'leaflet'
+import Layer from './Layer'
 
 let defaultOptions = Leaflet.Path.prototype.options
 const styleProps = {
@@ -62,8 +63,18 @@ const mapEvents = [
 ]
 
 export default {
+
+  mixins: [ Layer ],
+
   props: {
     ...styleProps
+  },
+
+  beforeCreate () {
+    this.$setPath = path => {
+      this.$path = path
+      this.$setLayer(path)
+    }
   },
 
   computed: {
@@ -91,4 +102,5 @@ export default {
       })
     }
   }
+
 }
