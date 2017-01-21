@@ -1,13 +1,13 @@
 <template>
   <div>
-    <vue-map :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
-      <vue-marker v-for="markerPosition in markers" :position="markerPosition"></vue-marker>
-      <vue-layer-group>
-        <vue-geo-json :data="geoJson" :feature-style="geoJsonStyle"></vue-geo-json>
-        <vue-circle :position="{lat: 49.614, lng: 6.084}" :radius="1000" :stroke="true" color="#990"></vue-circle>
-      </vue-layer-group>
-      <vue-rectangle :bounds="[{lat: 49.614, lng: 6.084}, { lat: 49.62, lng: 6.118 }]"></vue-rectangle>
-    </vue-map>
+    <vmap :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
+      <vmap-marker v-for="markerPosition in markers" :position="markerPosition"></vmap-marker>
+      <vmap-layer-group>
+        <vmap-geo-json :data="geoJson" :feature-style="geoJsonStyle"></vmap-geo-json>
+        <vmap-circle :position="{lat: 49.614, lng: 6.084}" :radius="1000" :stroke="true" color="#990"></vmap-circle>
+      </vmap-layer-group>
+      <vmap-rectangle :bounds="[{lat: 49.614, lng: 6.084}, { lat: 49.62, lng: 6.118 }]"></vmap-rectangle>
+    </vmap>
     <fieldset>
       <legend>Map</legend>
       <div>
@@ -37,17 +37,17 @@
 </template>
 
 <script>
-import VueMap from './components/Map'
-import VueMarker from './components/Marker'
-import VueGeoJson from './components/GeoJson'
-import VueCircle from './components/Circle'
-import VueLayerGroup from './components/LayerGroup'
-import VueRectangle from './components/Rectangle'
+import * as components from './components'
 
 export default {
   name: 'app',
   components: {
-    VueMap, VueMarker, VueGeoJson, VueCircle, VueLayerGroup, VueRectangle
+    Vmap: components.Map,
+    VmapMarker: components.Marker,
+    VmapGeoJson: components.GeoJson,
+    VmapCircle: components.Circle,
+    VmapLayerGroup: components.LayerGroup,
+    VmapRectangle: components.Rectangle
   },
   data () {
     return {
