@@ -6,6 +6,7 @@
         <vue-geo-json :data="geoJson" :feature-style="geoJsonStyle"></vue-geo-json>
         <vue-circle :position="{lat: 49.614, lng: 6.084}" :radius="1000" :stroke="true" color="#990"></vue-circle>
       </vue-layer-group>
+      <vue-rectangle :bounds="[{lat: 49.614, lng: 6.084}, { lat: 49.62, lng: 6.118 }]"></vue-rectangle>
     </vue-map>
     <fieldset>
       <legend>Map</legend>
@@ -41,11 +42,12 @@ import VueMarker from './components/Marker'
 import VueGeoJson from './components/GeoJson'
 import VueCircle from './components/Circle'
 import VueLayerGroup from './components/LayerGroup'
+import VueRectangle from './components/Rectangle'
 
 export default {
   name: 'app',
   components: {
-    VueMap, VueMarker, VueGeoJson, VueCircle, VueLayerGroup
+    VueMap, VueMarker, VueGeoJson, VueCircle, VueLayerGroup, VueRectangle
   },
   data () {
     return {

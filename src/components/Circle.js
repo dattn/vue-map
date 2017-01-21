@@ -32,11 +32,11 @@ export default {
 
   watch: {
     position (position) {
-      this.$path.setLatLng(position)
+      this.$circle.setLatLng(position)
     },
 
     radius (radius) {
-      this.$path.setRadius(radius)
+      this.$circle.setRadius(radius)
     }
   }
 
