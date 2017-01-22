@@ -1,6 +1,8 @@
 import Leaflet from 'leaflet'
 import Path from './mixins/Path'
 
+const defaultOptions = Leaflet.Polygon.prototype.options
+
 export default {
 
   mixins: [ Path ],
@@ -9,19 +11,23 @@ export default {
     latlngs: {
       type: Array,
       required: true
+    },
+    fill: {
+      type: Boolean,
+      default: defaultOptions.fill
     }
   },
 
   created () {
-    this.$polyline = Leaflet.polyline(this.latlngs, {
+    this.$polygon = Leaflet.polygon(this.latlngs, {
       ...this.pathStyle
     })
-    this.$setLayer(this.$polyline)
+    this.$setLayer(this.$polygon)
   },
 
   watch: {
     latlngs (latlngs) {
-      this.$polyline.setLatLngs(latlngs)
+      this.$polygon.setLatLngs(latlngs)
     }
   }
 
