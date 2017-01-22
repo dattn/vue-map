@@ -1,6 +1,10 @@
 <template>
   <div>
     <vmap :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
+      <vmap-tile-layer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; <a href=&#34;http://osm.org/copyright&#34;>OpenStreetMap</a> contributors uga uga"
+      ></vmap-tile-layer>
       <vmap-marker v-for="markerPosition in markers" :position="markerPosition"></vmap-marker>
       <vmap-layer-group>
         <vmap-geo-json :data="geoJson" :feature-style="geoJsonStyle"></vmap-geo-json>
@@ -47,7 +51,8 @@ export default {
     VmapGeoJson: components.GeoJson,
     VmapCircle: components.Circle,
     VmapLayerGroup: components.LayerGroup,
-    VmapRectangle: components.Rectangle
+    VmapRectangle: components.Rectangle,
+    VmapTileLayer: components.TileLayer
   },
   data () {
     return {
