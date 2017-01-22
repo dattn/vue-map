@@ -11,6 +11,7 @@
         <vmap-circle :position="{lat: 49.614, lng: 6.084}" :radius="1000" :stroke="true" color="#990"></vmap-circle>
       </vmap-layer-group>
       <vmap-rectangle :bounds="[{lat: 49.614, lng: 6.084}, { lat: 49.62, lng: 6.118 }]"></vmap-rectangle>
+      <vmap-poly-line :latlngs="[{lat: 49.614, lng: 6.084}, { lat: 49.62, lng: 6.118 }]"></vmap-poly-line>
     </vmap>
     <fieldset>
       <legend>Map</legend>
@@ -51,6 +52,7 @@ export default {
     VmapGeoJson: components.GeoJson,
     VmapCircle: components.Circle,
     VmapLayerGroup: components.LayerGroup,
+    VmapPolyLine: components.PolyLine,
     VmapRectangle: components.Rectangle,
     VmapTileLayer: components.TileLayer
   },
