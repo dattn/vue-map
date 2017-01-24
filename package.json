@@ -1,6 +1,6 @@
 {
   "name": "vue-map",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A Vue.js map component using leaflet",
   "author": "Daniel Duton <daniel@duton.lu>",
   "license": "MIT",
@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "vue": "^2.1.0"
