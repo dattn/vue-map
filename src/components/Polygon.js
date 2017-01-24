@@ -22,7 +22,7 @@ export default {
     this.$polygon = Leaflet.polygon(this.latlngs, {
       ...this.pathStyle
     })
-    this.$setLayer(this.$polygon)
+    this.$setPath(this.$polygon)
   },
 
   watch: {

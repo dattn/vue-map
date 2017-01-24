@@ -16,7 +16,7 @@ export default {
     this.$polyline = Leaflet.polyline(this.latlngs, {
       ...this.pathStyle
     })
-    this.$setLayer(this.$polyline)
+    this.$setPath(this.$polyline)
   },
 
   watch: {
