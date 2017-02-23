@@ -89,11 +89,11 @@
       zoom (zoom) {
         this.$map.setZoom(zoom)
       },
-      
+
       minZoom (minZoom) {
         this.$map.setMinZoom(minZoom)
       },
-      
+
       maxZoom (maxZoom) {
         this.$map.setMaxZoom(maxZoom)
       },
