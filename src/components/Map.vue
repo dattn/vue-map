@@ -36,11 +36,24 @@
       zoom: {
         type: Number,
         default: 13
+      },
+
+      minZoom: {
+        type: Number
+      },
+
+      maxZoom: {
+        type: Number
       }
     },
 
     mounted () {
-      this.$map = Leaflet.map(this.$refs.map).setView(this.position, this.zoom)
+      this.$map = Leaflet.map(this.$refs.map, {
+        center: this.position,
+        zoom: this.zoom,
+        minZoom: this.minZoom,
+        maxZoom: this.maxZoom
+      })
 
       // passthru events
       const mapEvents = [
@@ -75,6 +88,14 @@
     watch: {
       zoom (zoom) {
         this.$map.setZoom(zoom)
+      },
+      
+      minZoom (minZoom) {
+        this.$map.setMinZoom(minZoom)
+      },
+      
+      maxZoom (maxZoom) {
+        this.$map.setMaxZoom(maxZoom)
       },
 
       position (position) {
