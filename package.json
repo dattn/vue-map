@@ -1,6 +1,6 @@
 {
   "name": "vue-map",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Vue.js map component using leaflet",
   "author": "Daniel Duton <daniel@duton.lu>",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "dev": "node build/dev-server.js",
     "demo": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "prepublish": "npm run build",
+    "prepublish": "npm run release",
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js"
   },
   "dependencies": {
