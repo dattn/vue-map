@@ -3,7 +3,7 @@
     <vmap :position="position" :zoom="zoom" @zoom="onZoom" @move="onMove">
       <vmap-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution="&copy; <a href=&#34;http://osm.org/copyright&#34;>OpenStreetMap</a> contributors uga uga"
+        attribution="&copy; <a href=&#34;http://osm.org/copyright&#34;>OpenStreetMap</a> contributors"
       ></vmap-tile-layer>
       <vmap-marker v-for="markerPosition in markers" :position="markerPosition"></vmap-marker>
       <vmap-layer-group>
