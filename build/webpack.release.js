@@ -1,23 +1,19 @@
+var vue = require('vue-loader')
 var path = require('path')
-var config = require('../config')
 var utils = require('./utils')
+var webpack = require("webpack")
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 var projectRoot = path.resolve(__dirname, '../')
-
-var env = process.env.NODE_ENV
-// check env & config/index.js to decide whether to enable CSS source maps for the
-// various preprocessor loaders added to vue-loader at the end of this file
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+var cssLoader = ExtractTextPlugin.extract('style-loader', 'css-loader')
 
 module.exports = {
   entry: {
-    app: './demo/main.js'
+    'vue-map': './src/index.js'
   },
   output: {
-    path: config.build.assetsRoot,
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
-    filename: '[name].js'
+    filename: './dist/[name].js',
+    library: 'VueMap',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['', '.js', '.vue', '.json'],
@@ -83,12 +79,27 @@ module.exports = {
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },
-  vue: {
-    loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
-    postcss: [
-      require('autoprefixer')({
-        browsers: ['last 2 versions']
-      })
-    ]
+  babel: {
+    presets: ['es2015'],
+    plugins: ['transform-runtime']
   }
+}
+
+if (process.env.NODE_ENV === 'production') {
+
+  delete module.exports.devtool
+  module.exports.plugins = [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.optimize.OccurenceOrderPlugin()
+    // new ExtractTextPlugin('build.css')
+  ]
 }

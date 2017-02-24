@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import * as components from './components'
+import * as components from '../src/components'
 
 export default {
   name: 'app',
