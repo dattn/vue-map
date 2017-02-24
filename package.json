@@ -1,6 +1,6 @@
 {
   "name": "vue-map",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Vue.js map component using leaflet",
   "author": "Daniel Duton <daniel@duton.lu>",
   "license": "MIT",
